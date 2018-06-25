@@ -207,16 +207,16 @@ function play(guild, song) {
 }
 
 client.on('message', message => {
-    var prefix = "2";
+	var prefix = "5";
     
       if (!message.content.startsWith(prefix)) return;
       var args = message.content.split(' ').slice(1);
       var argresult = args.join(' ');
-      if (message.author.id == 428733432731009024) return;
+      if (message.author.id == 354653862533136387) return;
     
     
     if (message.content.startsWith(prefix + 'playing')) {
-    if (message.author.id !== '234454368072630283') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+    if (message.author.id !== '354653862533136387') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
     client.user.setGame(argresult);
         message.channel.sendMessage(`**${argresult}** : تم تغيير الحالة`)
     } else
@@ -224,7 +224,7 @@ client.on('message', message => {
      
     if (message.content.startsWith(prefix + 'streem')) {
     if (message.author.id !== '354653862533136387') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
-    client.user.setGame(argresult, "http://twitch.tv/HP");
+    client.user.setGame(argresult, "https://discord.gg/D6N2Cx5");
         message.channel.sendMessage(`**${argresult}** :تم تغيير الحالة الى ستريمنج`)
     } else
     
@@ -243,7 +243,7 @@ client.on('message', message => {
     
     
     if (message.content.startsWith(prefix + 'watching')) {
-    if (message.author.id !== '234454368072630283') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+    if (message.author.id !== '354653862533136387') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
         client.user.setActivity(argresult, {type : 'watching'});
      message.channel.sendMessage(`**${argresult}** : تم تغيير الووتشينق الى`)
     }
@@ -251,25 +251,36 @@ client.on('message', message => {
      });
 
 	 
-	 client.on('ready', function(){
-		client.user.setStatus("dnd");
-		var ms = 100000 ;
-		var setGame = [`2help البوت خاص لكلان رعب`];
-		var i = -1;
-		var j = 0;
-		setInterval(function (){
-			if( i == -1 ){
-				j = 1;
-			}
-			if( i == (setGame.length)-1 ){
-				j = -1;
-			}
-			i = i+j;
-			client.user.setGame(setGame[i],`http://www.twitch.tv/r3b`);
-		}, ms);100000
-	
-	});
+	 
+client.on("message", message => {
+ if (message.content === "5help") {
+        message.react("✅")
+           message.react("📬")
+  const embed = new Discord.RichEmbed() 
+      .setColor("#ffff00")
+      .setDescription(`
+══════════ஜ۩۞۩ஜ════════════  
+    
+     5play
+     امر تشغيل الأغنية , !شغل الرابط او اسم الأعنية
+     5skip
+     تغير الأغنية
+     5pause
+     ايقاف الأغنية
+     5resume
+     مواصلة الأغنية
+     5vol
+   لتغيير درجه الصوت 1-100
+     5stop
+     خروج البوت من الروم
+══════════ஜ۩۞۩ஜ════════════ 
+ `)
+
+   message.author.sendEmbed(embed)
+   
+   }
+   }); 
+
 
 
 client.login(process.env.BOT_TOKEN);
-
